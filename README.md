@@ -6,9 +6,10 @@ A collection of reusable slash commands and CLAUDE.md templates for Claude Code,
 
 ```
 claude-code-configs/
-├── commands/           # Slash commands for Claude Code
-│   └── teach.md       # Interactive coding tutor command
-├── templates/         # CLAUDE.md templates for different project types
+├── commands/              # Slash commands for Claude Code
+│   ├── teach.md          # Interactive coding tutor command
+│   └── odin-js-setup.md  # Odin Project JavaScript setup command
+├── templates/            # CLAUDE.md templates for different project types
 │   └── CLAUDE_LEARNING.md  # Template for learning/tutorial projects
 └── README.md
 ```
@@ -26,6 +27,54 @@ Activates an interactive teaching mode where Claude acts as a coding tutor who:
 - Guides you step-by-step through concepts
 
 **Usage**: Type `/teach` in any Claude Code conversation to activate tutor mode.
+
+### `/odin-js-setup` - Odin Project JavaScript Setup
+
+Automatically sets up a complete JavaScript project following The Odin Project curriculum requirements and 2025 best practices. This command creates:
+
+- **Build System**: Webpack 5 with dev server, loaders for CSS/HTML/images, and source maps
+- **Code Quality**: ESLint (modern flat config) and Prettier with integration
+- **Testing**: Jest with Babel for ES modules support
+- **Project Structure**: Organized src/ directory with modules/ subdirectory
+- **Starter Files**: HTML template, CSS styles, and example ES6 modules
+- **npm Scripts**: Commands for dev, build, test, lint, format, and deploy
+
+**What gets installed**:
+
+- Webpack ecosystem (webpack, webpack-cli, webpack-dev-server, loaders, plugins)
+- ESLint with recommended rules (flat config format for v9+)
+- Prettier with ESLint integration
+- Jest testing framework with Babel
+- Complete configuration files for all tools
+
+**Project structure created**:
+
+```
+project-root/
+├── src/
+│   ├── index.js           # Entry point
+│   ├── template.html      # HTML template
+│   ├── style.css          # Styles
+│   └── modules/           # ES6 modules
+│       ├── greeting.js    # Example module
+│       └── greeting.test.js # Example test (co-located)
+├── tests/                 # Alternative test location
+├── webpack.config.js
+├── eslint.config.js
+├── babel.config.js
+├── .prettierrc
+├── .prettierignore
+└── .gitignore
+```
+
+**Usage**:
+
+1. Create/navigate to your project directory
+2. Type `/odin-js-setup` in Claude Code
+3. Follow the prompts to complete setup
+4. Run `npm run dev` to start developing!
+
+**Perfect for**: Restaurant Page, Todo List, Battleship, Weather App, and other Odin Project JavaScript projects.
 
 ## Available Templates
 
@@ -58,6 +107,7 @@ A CLAUDE.md template for learning and tutorial projects that instructs Claude to
 
    # Symlink individual commands
    ln -s ~/repos/claude-code-configs/commands/teach.md ~/.claude/commands/teach.md
+   ln -s ~/repos/claude-code-configs/commands/odin-js-setup.md ~/.claude/commands/odin-js-setup.md
 
    # Or symlink the entire commands directory (alternative approach)
    # ln -s ~/repos/claude-code-configs/commands/* ~/.claude/commands/
@@ -66,7 +116,7 @@ A CLAUDE.md template for learning and tutorial projects that instructs Claude to
 3. **Verify installation**:
    - Open Claude Code
    - Type `/` to see available commands
-   - You should see `/teach` in the list
+   - You should see `/teach` and `/odin-js-setup` in the list
 
 ### Using Templates
 
