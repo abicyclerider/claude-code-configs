@@ -100,23 +100,34 @@ A CLAUDE.md template for learning and tutorial projects that instructs Claude to
    cd claude-code-configs
    ```
 
-2. **Set up symlinks** to make commands available in Claude Code:
-   ```bash
-   # Create the .claude/commands directory if it doesn't exist
-   mkdir -p ~/.claude/commands
+2. Set up symlinks to make commands available in Claude Code:
 
-   # Symlink individual commands
-   ln -s ~/repos/claude-code-configs/commands/teach.md ~/.claude/commands/teach.md
-   ln -s ~/repos/claude-code-configs/commands/odin-js-setup.md ~/.claude/commands/odin-js-setup.md
+**Easy way** (run from inside the repository directory):
+```bash
+mkdir -p ~/.claude/commands
+ln -s "$(pwd)/commands/teach.md" ~/.claude/commands/teach.md
+ln -s "$(pwd)/commands/odin-js-setup.md" ~/.claude/commands/odin-js-setup.md
+```
 
-   # Or symlink the entire commands directory (alternative approach)
-   # ln -s ~/repos/claude-code-configs/commands/* ~/.claude/commands/
-   ```
+**Manual way** (if you need to specify the path):
+```bash
+mkdir -p ~/.claude/commands
+ln -s /full/path/to/claude-code-configs/commands/teach.md ~/.claude/commands/teach.md
+ln -s /full/path/to/claude-code-configs/commands/odin-js-setup.md ~/.claude/commands/odin-js-setup.md
+```
 
-3. **Verify installation**:
+3. Verify the symlinks work:
+```bash
+ls -la ~/.claude/commands/
+cat ~/.claude/commands/teach.md  # Should display file contents
+```
+
+4. **Verify installation**:
    - Open Claude Code
    - Type `/` to see available commands
    - You should see `/teach` and `/odin-js-setup` in the list
+
+5. Restart VSCode completely (Quit and reopen) to load the new commands
 
 ### Using Templates
 
